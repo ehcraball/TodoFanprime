@@ -8,7 +8,7 @@
     <div v-if="todos.length == 0">Vous n'avez pas de tâche à faire</div>
     <div v-else>
         <ul>
-            <li v-for="todo in todos" :key="todo.date">
+            <li v-for="todo in todos" :key="todo.date" :class="{ completed: todo.completed }">
                 <input type="checkbox" v-model="todo.completed" />{{ todo.title }}
             </li>
         </ul>
@@ -43,3 +43,10 @@ const addTodo = () => {
     newTodo.value = ''
 }
 </script>
+
+<style>
+.completed {
+    opacity: 0.5;
+    text-decoration: line-through;
+}
+</style>

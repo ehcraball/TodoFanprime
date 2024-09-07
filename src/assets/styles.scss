@@ -1,0 +1,90 @@
+// Variables de base
+$primary-color: #3498db;
+$completed-color: #2ecc71;
+$button-color: rgb(226, 76, 76);
+$border-radius: 4px;
+$background: #282936;
+$font-color: #fff;
+
+// Styles de base pour le corps de la page
+body {
+  font-family: Arial, sans-serif;
+  color: $font-color;
+  background-color: $background;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+// Formulaire de tâches
+form {
+  margin-bottom: 20px;
+
+  fieldset {
+    border: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: $border-radius;
+    width: 70%;
+  }
+
+  button {
+    padding: 8px 12px;
+    background-color: $primary-color;
+    border: none;
+    border-radius: $border-radius;
+    color: white;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Liste de tâches
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: $background;
+  border: 5px solid $button-color;
+  border-radius: $border-radius;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &.completed {
+    text-decoration: line-through;
+    color: $completed-color;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  button {
+    background-color: $button-color;
+    border: none;
+    border-radius: $border-radius;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

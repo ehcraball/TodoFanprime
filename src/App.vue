@@ -11,13 +11,14 @@
             <li v-for="todo in todos" :key="todo.date" :class="{ completed: todo.completed }">
                 <input type="checkbox" v-model="todo.completed" />{{ todo.title }}
                 <button @click="editTodo(todo)">Modifier</button>
+                <button @click="deleteTodo(todo)">Supprimer</button>
             </li>
         </ul>
     </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const newTodo = ref('')
 const todos = ref([{
@@ -35,18 +36,47 @@ const todos = ref([{
     completed: false,
     date: 3,
 }])
+
+
+const saveTodos = () => {
+    localStorage.setItem('todos', JSON.stringify(todos.value));
+}
+
+
+onMounted(() => {
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+        todos.value = JSON.parse(savedTodos);
+    }
+});
+
+
 const addTodo = () => {
+    if (newTodo.value.trim() === '') return;
     todos.value.push({
         title: newTodo.value,
         completed: false,
         date: Date.now(),
     })
     newTodo.value = ''
+    saveTodos();
 }
 
 const editTodo = (todo) => {
-    todo.title = prompt(todo.title)
+    const newTitle = prompt(todo.title);
+    if (newTitle !== null && newTitle.trim() !== '') {
+        todo.title = newTitle;
+        saveTodos();
+    } else if (newTitle === '') {
+        alert("Titre non valide")
+    }
 }
+
+const deleteTodo = (todo) => {
+    todos.value = todos.value.filter(task => task != todo)
+    saveTodos();
+}
+
 </script>
 
 <style>

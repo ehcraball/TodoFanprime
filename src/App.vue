@@ -12,7 +12,21 @@
 import { ref } from "vue";
 
 const newTodo = ref('')
-const todos = ref([])
+const todos = ref([{
+    title: 'Task 1',
+    completed: false,
+    date: Date.now(),
+},
+{
+    title: 'Task 2',
+    completed: false,
+    date: Date.now(),
+},
+{
+    title: 'Task 3',
+    completed: false,
+    date: Date.now(),
+}])
 const addTodo = () => {
     todos.value.push({
         title: newTodo.value,

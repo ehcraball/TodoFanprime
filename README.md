@@ -19,11 +19,13 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine :
    Clonez le dépôt GitHub sur votre machine locale :
 
    ```bash
-   git clone https://github.com/ehcraball/TodoFanprime
+   git clone https://github.com/ehcraball/TodoFanprime.git
 2. Créer un nouveau projet : 
 ```sh
 npm init vue@latest
 ```
+Une fois le nom de votre projet donné, vous pouvez dire non à chaque demande du terminal. Nous n'utiliserons rien de spécifique.
+
 3. Installer les dépendences : 
 cd nom-projet
 npm install

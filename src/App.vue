@@ -2,7 +2,7 @@
     <form action="" @submit.prevent="addTodo">
         <fieldset role="group">
             <input v-model="newTodo" type="text" placeholder="Tâche(s) à faire" />
-            <button>Ajouter</button>
+            <button :disabled="newTodo.length == 0">Ajouter</button>
         </fieldset>
     </form>
     <div v-if="todos.length == 0">Vous n'avez pas de tâche à faire</div>

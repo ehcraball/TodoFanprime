@@ -10,6 +10,7 @@
         <ul>
             <li v-for="todo in todos" :key="todo.date" :class="{ completed: todo.completed }">
                 <input type="checkbox" v-model="todo.completed" />{{ todo.title }}
+                <button @click="editTodo(todo)">Modifier</button>
             </li>
         </ul>
     </div>
@@ -41,6 +42,10 @@ const addTodo = () => {
         date: Date.now(),
     })
     newTodo.value = ''
+}
+
+const editTodo = (todo) => {
+    todo.title = prompt(todo.title)
 }
 </script>
 

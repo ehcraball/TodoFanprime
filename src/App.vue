@@ -6,6 +6,13 @@
         </fieldset>
     </form>
     <div v-if="todos.length == 0">Vous n'avez pas de tâche à faire</div>
+    <div v-else>
+        <ul>
+            <li v-for="todo in todos" :key="todo.date">
+                <input type="checkbox" v-model="todo.completed" />{{ todo.title }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script setup>
@@ -15,17 +22,17 @@ const newTodo = ref('')
 const todos = ref([{
     title: 'Task 1',
     completed: false,
-    date: Date.now(),
+    date: 1,
 },
 {
     title: 'Task 2',
     completed: false,
-    date: Date.now(),
+    date: 2,
 },
 {
     title: 'Task 3',
     completed: false,
-    date: Date.now(),
+    date: 3,
 }])
 const addTodo = () => {
     todos.value.push({
@@ -33,5 +40,6 @@ const addTodo = () => {
         completed: false,
         date: Date.now(),
     })
+    newTodo.value = ''
 }
 </script>
